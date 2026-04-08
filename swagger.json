@@ -1,0 +1,203 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API REST - Repertoire de Personnes",
+    "description": "API complète pour gérer un répertoire de personnes. Base : MySQL (phpMyAdmin). Toutes les requêtes SQL sont sécurisées (paramétrées).",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Serveur local"
+    }
+  ],
+  "paths": {
+    "/api/people": {
+      "get": {
+        "tags": ["Personnes"],
+        "summary": "Lister toutes les personnes",
+        "description": "Retourne toutes les personnes triées par nom. Ajoutez ?lname=Diallo pour filtrer.",
+        "parameters": [
+          {
+            "name": "lname",
+            "in": "query",
+            "required": false,
+            "description": "Filtrer par nom de famille",
+            "schema": { "type": "string", "example": "Diallo" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Liste des personnes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Person" }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erreur serveur",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Personnes"],
+        "summary": "Ajouter une nouvelle personne",
+        "description": "Crée une nouvelle personne. Le timestamp est défini automatiquement.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PersonInput" },
+              "example": { "lname": "Diop", "fname": "Fatou" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Personne créée",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Succes" } } }
+          },
+          "400": {
+            "description": "Données invalides",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          },
+          "500": {
+            "description": "Erreur serveur",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          }
+        }
+      }
+    },
+    "/api/people/{id}": {
+      "get": {
+        "tags": ["Personnes"],
+        "summary": "Obtenir une personne par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "example": 1 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Personne trouvée",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Person" } } }
+          },
+          "404": {
+            "description": "Personne introuvable",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          },
+          "500": {
+            "description": "Erreur serveur",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Personnes"],
+        "summary": "Modifier une personne",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "example": 2 }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PersonInput" },
+              "example": { "lname": "Sow", "fname": "Awa Marie" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Personne modifiée",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Succes" } } }
+          },
+          "400": {
+            "description": "Données invalides",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          },
+          "404": {
+            "description": "Personne introuvable",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          },
+          "500": {
+            "description": "Erreur serveur",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Personnes"],
+        "summary": "Supprimer une personne",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "example": 3 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Personne supprimée",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Succes" } } }
+          },
+          "404": {
+            "description": "Personne introuvable",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          },
+          "500": {
+            "description": "Erreur serveur",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Erreur" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Person": {
+        "type": "object",
+        "properties": {
+          "id":        { "type": "integer", "example": 1 },
+          "lname":     { "type": "string",  "example": "Diallo" },
+          "fname":     { "type": "string",  "example": "Ali" },
+          "timestamp": { "type": "string",  "example": "2026-04-08 10:00:00" }
+        }
+      },
+      "PersonInput": {
+        "type": "object",
+        "required": ["lname", "fname"],
+        "properties": {
+          "lname": { "type": "string", "minLength": 1, "example": "Diop" },
+          "fname": { "type": "string", "minLength": 1, "example": "Fatou" }
+        }
+      },
+      "Succes": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string", "example": "Personne ajoutee avec succes" }
+        }
+      },
+      "Erreur": {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string", "example": "Personne introuvable" }
+        }
+      }
+    }
+  }
+}
