@@ -63,11 +63,3 @@ graph LR
     
     style A fill:#4CAF50
     style G fill:#2196F3
-api_project/
-├── 📄 app.py              # Point d'entrée Flask
-├── 📄 database.py         # Connexion MySQL
-├── 📄 routes.py           # Endpoints CRUD
-├── 📄 swagger.yml         # Documentation OpenAPI 3.0
-├── 📄 requirements.txt    # Dépendances
-├── 📄 init_db.sql         # Script SQL (base + table + données)
-└── 📄 README.md           # Documentation
