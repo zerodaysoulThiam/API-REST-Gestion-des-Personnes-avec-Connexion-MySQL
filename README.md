@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📇 API REST — Répertoire de Personnes
+#  API REST — Répertoire de Personnes
 
 ### *Une API RESTful élégante pour la gestion d'un répertoire de personnes*
 
@@ -32,22 +32,22 @@
 
 ---
 
-## 📊 Project Statistics
+##  Project Statistics
 
 <div align="center">
 
 | Métrique | Valeur | Statut |
 |----------|--------|--------|
-| **Temps de réponse** | < 100ms | ✅ Excellent |
-| **Couverture de code** | 95% | ✅ Optimal |
-| **Sécurité SQL** | 100% | ✅ Paramétrée |
-| **Disponibilité** | 99.9% | ✅ Stable |
+| **Temps de réponse** | < 100ms |  Excellent |
+| **Couverture de code** | 95% |  Optimal |
+| **Sécurité SQL** | 100% |  Paramétrée |
+| **Disponibilité** | 99.9% |  Stable |
 
 </div>
 
 ---
 
-## 📈 Performance Metrics
+##  Performance Metrics
 
 ```mermaid
 graph LR
