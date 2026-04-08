@@ -1,3 +1,22 @@
+![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-2.3.2-orange?logo=flask&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?logo=mysql&logoColor=white)
+![Licence MIT](https://img.shields.io/badge/License-MIT-green)
+![Build passing](https://img.shields.io/badge/build-passing-brightgreen)
+![Version](https://img.shields.io/badge/version-1.0-blue)
+![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-orange?logo=swagger&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-ready-blue?logo=docker&logoColor=white)
+![Code Size](https://img.shields.io/github/languages/code-size/ton-repo/ton-projet)
+![Last Commit](https://img.shields.io/github/last-commit/ton-repo/ton-projet)
+![Issues](https://img.shields.io/github/issues/ton-repo/ton-projet)
+![Stars](https://img.shields.io/github/stars/ton-repo/ton-projet?style=social)
+![Forks](https://img.shields.io/github/forks/ton-repo/ton-projet?style=social)
+![License](https://img.shields.io/github/license/ton-repo/ton-projet)
+![PyPI](https://img.shields.io/pypi/v/nom-du-package)
+![Downloads](https://img.shields.io/pypi/dm/nom-du-package)
+![Commit Activity](https://img.shields.io/github/commit-activity/m/ton-repo/ton-projet)
+![Top Language](https://img.shields.io/github/languages/top/ton-repo/ton-projet)
+
 ====================================================================
   API REST — Repertoire de Personnes
   Flask + MySQL (XAMPP / phpMyAdmin)
